@@ -1,0 +1,131 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:RadialMenu.Controls"
+    xmlns:Converters="clr-namespace:RadialMenu.Converters">
+
+    <Converters:IndexAndCountToAngleDelta x:Key="IndexAndCountToAngleDelta"/>
+    <Converters:IndexAndCountToRotation x:Key="IndexAndCountToRotation"/>
+    <Converters:IndexAndCountToStartAngle x:Key="IndexAndCountToStartAngle"/>
+    <Converters:IndexCountAndSizeToPosition x:Key="IndexCountAndSizeToPosition"/>
+
+    <Canvas x:Key="RoundedArrow" Width="76" Height="76" Background="Transparent">
+        <Path Width="76" Height="42.75" Canvas.Left="0" Canvas.Top="16.125" Stretch="Fill" Fill="#FFFFFF" Data="m 5.427 222.9380 c 3.614 3.617 7.898 5.424 12.848 5.424 l 255.813 0 c 4.952 0 9.233 -1.807 12.85 -5.424 3.617 -3.621 5.424 -7.902 5.424 -12.851 0 -4.948 -1.807 -9.229 -5.424 -12.847 L 159.031 69.3330 c -3.621 -3.617 -7.902 -5.428 -12.85 -5.428 -4.948 0 -9.233 1.811 -12.847 5.428 L 5.427 197.2410 C 1.814 200.8580 0 205.1390 0 210.0880 c 0 4.948 1.814 9.229 5.427 12.85 z"/>
+    </Canvas>
+
+    <Style x:Key="RadialMenuItem" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="IsEnabled" Value="True" />
+        <Setter Property="Foreground" Value="#111111" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="#CCCCCC" />
+        <Setter Property="Panel.ZIndex" Value="0" />
+        <Setter Property="Background" Value="#CCCCCC" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#999999"/>
+                <Setter Property="Panel.ZIndex" Value="10" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#666666"/>
+                <Setter Property="BorderBrush" Value="#333333"/>
+                <Setter Property="Panel.ZIndex" Value="10" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FAFAFA"/>
+                <Setter Property="BorderBrush" Value="#E3E3E3"/>
+                <Setter Property="Foreground" Value="#AFAFAF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Controls:RadialMenuItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="{x:Type Controls:RadialMenuItem}">
+                    <Border Panel.ZIndex="{TemplateBinding Panel.ZIndex}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <Button Style="{StaticResource RadialMenuItem}" Command="{Binding Command, RelativeSource={RelativeSource AncestorType=Controls:RadialMenuItem}}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Canvas>
+
+                                        <Controls:PieShape CenterX="155" CenterY="155" OuterRadius="150" InnerRadius="30" Fill="Transparent">
+                                            <Controls:PieShape.StartAngle>
+                                                <MultiBinding Converter="{StaticResource IndexAndCountToStartAngle}">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Controls:PieShape.StartAngle>
+                                            <Controls:PieShape.AngleDelta>
+                                                <MultiBinding Converter="{StaticResource IndexAndCountToAngleDelta}">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Controls:PieShape.AngleDelta>
+                                        </Controls:PieShape>
+                                        
+                                        <Controls:PieShape Padding="2" CenterX="155" CenterY="155" OuterRadius="150" InnerRadius="135" Fill="{TemplateBinding Background}">
+                                            <Controls:PieShape.StartAngle>
+                                                <MultiBinding Converter="{StaticResource IndexAndCountToStartAngle}">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Controls:PieShape.StartAngle>
+                                            <Controls:PieShape.AngleDelta>
+                                                <MultiBinding Converter="{StaticResource IndexAndCountToAngleDelta}">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Controls:PieShape.AngleDelta>
+                                        </Controls:PieShape>
+
+                                        <Canvas Width="310" Height="310">
+                                            <Canvas.RenderTransform>
+                                                <RotateTransform CenterX="155" CenterY="155">
+                                                    <RotateTransform.Angle>
+                                                        <MultiBinding Converter="{StaticResource IndexAndCountToRotation}">
+                                                            <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                            <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                        </MultiBinding>
+                                                    </RotateTransform.Angle>
+                                                </RotateTransform>
+                                            </Canvas.RenderTransform>
+                                            <Rectangle Width="14" Height="14" Canvas.Left="148" Canvas.Top="5.5">
+                                                <Rectangle.Fill>
+                                                    <VisualBrush Visual="{StaticResource RoundedArrow}"/>
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                        </Canvas>
+
+                                        <ContentControl Content="{Binding Content, RelativeSource={RelativeSource AncestorType=Controls:RadialMenuItem}}">
+                                            <Canvas.Left>
+                                                <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="X">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Canvas.Left>
+                                            <Canvas.Top>
+                                                <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="Y">
+                                                    <Binding Path="Index" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                    <Binding Path="Content.ActualHeight" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenuItem}"/>
+                                                </MultiBinding>
+                                            </Canvas.Top>
+                                        </ContentControl>
+
+                                    </Canvas>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        
+                    </Border>
+                </ControlTemplate>
+                
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>
