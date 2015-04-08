@@ -35,7 +35,6 @@
             </Trigger>
         </Style.Triggers>
 
-        <Setter Property="Panel.ZIndex" Value="0"/>
         <Setter Property="InnerRadius" Value="30"/>
         <Setter Property="OuterRadius" Value="150"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -45,6 +44,7 @@
         <Setter Property="EdgeBackground" Value="#CCC"/>
         <Setter Property="EdgePadding" Value="2"/>
         <Setter Property="ArrowBackground" Value="#FFF"/>
+        <Setter Property="Panel.ZIndex" Value="0"/>
 
         <Setter Property="Template">
             <Setter.Value>

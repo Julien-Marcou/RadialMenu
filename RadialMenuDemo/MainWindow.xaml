@@ -11,19 +11,19 @@
     </Window.Resources>
     
     <Grid>
-        <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}" CentralMenuCommand="{Binding CloseRadialMenu}">
+        <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
 
-            <RadialMenu:RadialMenu.CentralMenuItem>
-                <WrapPanel Orientation="Vertical">
+            <RadialMenu:RadialMenu.CentralItem>
+                <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenu}">
                     <Rectangle Width="25" Height="25">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{StaticResource appbar_close}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                </WrapPanel>
-            </RadialMenu:RadialMenu.CentralMenuItem>
-            
-            <RadialMenu:RadialMenuItem Command="{Binding Test1}" Index="0" Count="6">
+                </RadialMenu:RadialMenuCentralItem>
+            </RadialMenu:RadialMenu.CentralItem>
+
+            <RadialMenu:RadialMenuItem Command="{Binding Test1}">
                 <WrapPanel Orientation="Vertical">
                     <Rectangle Width="25" Height="25">
                         <Rectangle.Fill>
@@ -36,7 +36,7 @@
                 </WrapPanel>
             </RadialMenu:RadialMenuItem>
 
-            <RadialMenu:RadialMenuItem Command="{Binding Test2}" Index="1" Count="6">
+            <RadialMenu:RadialMenuItem Command="{Binding Test2}">
                 <WrapPanel Orientation="Vertical">
                     <Rectangle Width="25" Height="25">
                         <Rectangle.Fill>

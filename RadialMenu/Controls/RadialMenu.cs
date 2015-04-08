@@ -20,14 +20,14 @@ namespace RadialMenu.Controls
             set { SetValue(IsOpenProperty, value); }
         }
 
-        public static readonly DependencyProperty CentralMenuItemProperty =
-            DependencyProperty.Register("CentralMenuItem", typeof(Panel), typeof(RadialMenu),
+        public static readonly DependencyProperty CentralItemProperty =
+            DependencyProperty.Register("CentralItem", typeof(RadialMenuCentralItem), typeof(RadialMenu),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public Panel CentralMenuItem
+        public RadialMenuCentralItem CentralItem
         {
-            get { return (Panel)GetValue(CentralMenuItemProperty); }
-            set { SetValue(CentralMenuItemProperty, value); }
+            get { return (RadialMenuCentralItem)GetValue(CentralItemProperty); }
+            set { SetValue(CentralItemProperty, value); }
         }
 
         public static readonly DependencyProperty CentralMenuCommandProperty =
