@@ -59,7 +59,7 @@
                             OuterRadius="{TemplateBinding OuterRadius}"
                             InnerRadius="{TemplateBinding InnerRadius}"
                             Fill="{TemplateBinding Background}"
-                            StrokeThickness="{TemplateBinding BorderThickness}"
+                            StrokeThickness="{Binding BorderThickness.Top, RelativeSource={RelativeSource AncestorType=Controls:RadialMenuItem}}"
                             Stroke="{TemplateBinding BorderBrush}">
                             
                             <Controls:PieShape.StartAngle>

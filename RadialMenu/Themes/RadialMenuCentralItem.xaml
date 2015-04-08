@@ -38,7 +38,7 @@
                     <Grid>
                         <Ellipse
                             Stroke="{TemplateBinding BorderBrush}"
-                            StrokeThickness="{TemplateBinding BorderThickness}"
+                            StrokeThickness="{Binding BorderThickness.Top, RelativeSource={RelativeSource AncestorType=Controls:RadialMenuCentralItem}}"
                             Fill="{TemplateBinding Background}"/>
                         <ContentPresenter
                             Content="{TemplateBinding Content}"
