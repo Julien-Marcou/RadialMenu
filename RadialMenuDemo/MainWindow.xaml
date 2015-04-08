@@ -23,7 +23,7 @@
                 </WrapPanel>
             </RadialMenu:RadialMenu.CentralMenuItem>
             
-            <RadialMenu:RadialMenuItem Command="{Binding Test1}">
+            <RadialMenu:RadialMenuItem Command="{Binding Test1}" Index="0" Count="6">
                 <WrapPanel Orientation="Vertical">
                     <Rectangle Width="25" Height="25">
                         <Rectangle.Fill>
@@ -36,7 +36,7 @@
                 </WrapPanel>
             </RadialMenu:RadialMenuItem>
 
-            <RadialMenu:RadialMenuItem Command="{Binding Test2}">
+            <RadialMenu:RadialMenuItem Command="{Binding Test2}" Index="1" Count="6">
                 <WrapPanel Orientation="Vertical">
                     <Rectangle Width="25" Height="25">
                         <Rectangle.Fill>

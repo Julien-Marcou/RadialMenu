@@ -138,7 +138,7 @@
                                 <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="X">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
                                 </MultiBinding>
                             </Canvas.Left>
                             
@@ -146,7 +146,7 @@
                                 <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="Y">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Content.ActualHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="Content.ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
                                 </MultiBinding>
                             </Canvas.Top>
                             

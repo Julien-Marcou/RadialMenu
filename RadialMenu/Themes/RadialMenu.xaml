@@ -8,23 +8,28 @@
     <Converters:ChildToIndex x:Key="ChildToIndex"/>
 
     <Style x:Key="CentralMenuItem" TargetType="{x:Type Button}">
+        
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="IsEnabled" Value="True" />
         <Setter Property="BorderBrush" Value="#CCCCCC" />
         <Setter Property="Panel.ZIndex" Value="0" />
+        
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="#999999"/>
             </Trigger>
+            
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="#666666"/>
                 <Setter Property="BorderBrush" Value="#666666"/>
                 <Setter Property="Panel.ZIndex" Value="10" />
             </Trigger>
+            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="#E3E3E3"/>
             </Trigger>
         </Style.Triggers>
+        
     </Style>
 
     <Style TargetType="{x:Type Controls:RadialMenu}">
@@ -70,13 +75,10 @@
 
         <Setter Property="Width" Value="310"/>
 
-        <Setter Property="Background" Value="Red"/>
-
         <Setter Property="Template">
             <Setter.Value>
-
                 <ControlTemplate TargetType="{x:Type Controls:RadialMenu}">
-                    <Controls:RadialMenuItemsControl ItemsSource="{TemplateBinding Content}">
+                    <ItemsControl ItemsSource="{TemplateBinding Content}">
 
                         <ItemsControl.Template>
                             <ControlTemplate>
@@ -95,12 +97,12 @@
                                 </Grid>
                             </ControlTemplate>
                         </ItemsControl.Template>
-                                
-                    </Controls:RadialMenuItemsControl>
+
+                    </ItemsControl>
                 </ControlTemplate>
-                
             </Setter.Value>
         </Setter>
+        
     </Style>
     
 </ResourceDictionary>

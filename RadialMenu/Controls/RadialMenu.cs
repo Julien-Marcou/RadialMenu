@@ -50,9 +50,24 @@ namespace RadialMenu.Controls
             set { SetValue(ContentProperty, value); }
         }
 
+        public List<RadialMenuItem> Items
+        {
+            get { return Content; }
+        }
+
         static RadialMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RadialMenu), new FrameworkPropertyMetadata(typeof(RadialMenu)));
+        }
+
+        protected override Size ArrangeOverride(Size arrangeSize)
+        {
+            for (int i = 0, count = Items.Count; i < count; i++)
+            {
+                Items[i].Index = i;
+                Items[i].Count = count;
+            }
+            return base.ArrangeOverride(arrangeSize);
         }
     }
 }

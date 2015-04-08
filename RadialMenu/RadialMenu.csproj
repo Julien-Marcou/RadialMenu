@@ -47,7 +47,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\RadialMenuItemsControl.cs" />
     <Compile Include="Converters\IndexAndCountToAngleDelta.cs" />
     <Compile Include="Converters\IndexAndCountToRotation.cs" />
     <Compile Include="Converters\IndexCountAndSizeToPosition.cs" />
@@ -55,10 +54,6 @@
     <Compile Include="Converters\ChildToIndex.cs" />
     <Compile Include="Controls\PieShape.cs" />
     <Compile Include="Controls\RadialMenuItem.cs" />
-    <Page Include="Themes\RadialMenuItemsControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Themes\PieShape.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
