@@ -52,7 +52,6 @@
     <Compile Include="Converters\IndexAndCountToRotation.cs" />
     <Compile Include="Converters\IndexCountAndSizeToPosition.cs" />
     <Compile Include="Converters\IndexAndCountToStartAngle.cs" />
-    <Compile Include="Converters\ChildToIndex.cs" />
     <Compile Include="Controls\PieShape.cs" />
     <Compile Include="Controls\RadialMenuItem.cs" />
     <Page Include="Themes\PieShape.xaml">
