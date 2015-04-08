@@ -49,7 +49,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 
-                <ControlTemplate TargetType="{x:Type Controls:RadialMenuItem}"><!--TargetType="Button">-->
+                <ControlTemplate TargetType="{x:Type Controls:RadialMenuItem}">
                     <Canvas Panel.ZIndex="{TemplateBinding Panel.ZIndex}">
 
                         <Controls:PieShape

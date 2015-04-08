@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 
-
 namespace RadialMenu.Converters
 {
     internal class ChildToIndex : IMultiValueConverter

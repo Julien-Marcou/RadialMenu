@@ -6,6 +6,7 @@
         <ResourceDictionary Source="/RadialMenu;component/Themes/PieShape.xaml"/>
         <ResourceDictionary Source="/RadialMenu;component/Themes/RadialMenu.xaml"/>
         <ResourceDictionary Source="/RadialMenu;component/Themes/RadialMenuItem.xaml"/>
+        <ResourceDictionary Source="/RadialMenu;component/Themes/RadialMenuItemsControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

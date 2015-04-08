@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace RadialMenu.Controls
@@ -10,16 +9,6 @@ namespace RadialMenu.Controls
     /// </summary>
     public class RadialMenuItem : Button
     {
-        /*public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(ICommand), typeof(RadialMenuItem),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        public ICommand Command
-        {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
-        }*/
-
         public new static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(Panel), typeof(RadialMenuItem),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));

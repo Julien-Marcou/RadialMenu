@@ -53,19 +53,6 @@
                     </BeginStoryboard>
                 </Trigger.ExitActions>
             </Trigger>
-            
-            <!--<Trigger Property="IsOpen" Value="False">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.6"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX" From="1" To="0.5" Duration="0:0:0.6"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY" From="1" To="0.5" Duration="0:0:0.6"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[1].Angle" From="0" To="-60" Duration="0:0:0.6"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-            </Trigger>-->
         </Style.Triggers>
         
         <Setter Property="Opacity" Value="0"/>
@@ -108,31 +95,6 @@
                                 </Grid>
                             </ControlTemplate>
                         </ItemsControl.Template>
-
-                        <!--<ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Grid Width="310" Height="310"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>-->
-
-                        <!--<ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Controls:RadialMenuItem Command="{Binding Command}" Content="{Binding Content}">
-
-                                    <Controls:RadialMenuItem.Index>
-                                        <MultiBinding Converter="{StaticResource ChildToIndex}">
-                                            <Binding Path="."/>
-                                            <Binding Path="Content" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenu}"/>
-                                        </MultiBinding>
-                                    </Controls:RadialMenuItem.Index>
-
-                                    <Controls:RadialMenuItem.Count>
-                                        <Binding Path="Content.Count" RelativeSource="{RelativeSource AncestorType=Controls:RadialMenu}"/>
-                                    </Controls:RadialMenuItem.Count>
-
-                                </Controls:RadialMenuItem>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>-->
                                 
                     </Controls:RadialMenuItemsControl>
                 </ControlTemplate>
