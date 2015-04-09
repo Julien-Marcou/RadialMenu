@@ -79,16 +79,6 @@ namespace RadialMenu.Controls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public new static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(Panel), typeof(RadialMenuItem),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        public new Panel Content
-        {
-            get { return (Panel)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
         public static readonly DependencyProperty ContentRadiusProperty =
             DependencyProperty.Register("ContentRadius", typeof(double), typeof(RadialMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
