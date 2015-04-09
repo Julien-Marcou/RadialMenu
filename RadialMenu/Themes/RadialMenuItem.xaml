@@ -4,10 +4,12 @@
     xmlns:Controls="clr-namespace:RadialMenu.Controls"
     xmlns:Converters="clr-namespace:RadialMenu.Converters">
 
-    <Converters:IndexAndCountToAngleDelta x:Key="IndexAndCountToAngleDelta"/>
-    <Converters:IndexAndCountToRotation x:Key="IndexAndCountToRotation"/>
-    <Converters:IndexAndCountToStartAngle x:Key="IndexAndCountToStartAngle"/>
-    <Converters:IndexCountAndSizeToPosition x:Key="IndexCountAndSizeToPosition"/>
+    <Converters:DoubleToHalfDouble x:Key="DoubleToHalfDouble"/>
+    <Converters:RadialMenuItemToAngleDelta x:Key="RadialMenuItemToAngleDelta"/>
+    <Converters:RadialMenuItemToRotation x:Key="RadialMenuItemToRotation"/>
+    <Converters:RadialMenuItemToStartAngle x:Key="RadialMenuItemToStartAngle"/>
+    <Converters:RadialMenuItemToContentPosition x:Key="RadialMenuItemToContentPosition"/>
+    <Converters:RadialMenuItemToArrowPosition x:Key="RadialMenuItemToArrowPosition"/>
 
     <Style x:Key="RoundedArrowPath" TargetType="{x:Type Path}">
         <Setter Property="Data" Value="m 5.427 222.9380 c 3.614 3.617 7.898 5.424 12.848 5.424 l 255.813 0 c 4.952 0 9.233 -1.807 12.85 -5.424 3.617 -3.621 5.424 -7.902 5.424 -12.851 0 -4.948 -1.807 -9.229 -5.424 -12.847 L 159.031 69.3330 c -3.621 -3.617 -7.902 -5.428 -12.85 -5.428 -4.948 0 -9.233 1.811 -12.847 5.428 L 5.427 197.2410 C 1.814 200.8580 0 205.1390 0 210.0880 c 0 4.948 1.814 9.229 5.427 12.85 z"/>
@@ -21,20 +23,28 @@
     <Style TargetType="{x:Type Controls:RadialMenuItem}">
 
         <Style.Triggers>
+
+            <!-- RadialMenuItem style when overed -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="EdgeBackground" Value="#999"/>
                 <Setter Property="Panel.ZIndex" Value="10"/>
             </Trigger>
+
+            <!-- RadialMenuItem style when pressed -->
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="EdgeBackground" Value="#666"/>
                 <Setter Property="Panel.ZIndex" Value="10" />
             </Trigger>
+
+            <!-- RadialMenuItem style when disabled -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="EdgeBackground" Value="#F3F3F3"/>
                 <Setter Property="Foreground" Value="#AFAFAF"/>
             </Trigger>
+            
         </Style.Triggers>
 
+        <!-- Default RadialMenuItem style -->
         <Setter Property="InnerRadius" Value="30"/>
         <Setter Property="OuterRadius" Value="150"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -43,18 +53,34 @@
         <Setter Property="EdgeOuterRadius" Value="150"/>
         <Setter Property="EdgeBackground" Value="#CCC"/>
         <Setter Property="EdgePadding" Value="2"/>
+        <Setter Property="ContentRadius" Value="82.5"/>
         <Setter Property="ArrowBackground" Value="#FFF"/>
+        <Setter Property="ArrowRadius" Value="142.5"/>
+        <Setter Property="ArrowWidth" Value="14"/>
+        <Setter Property="ArrowHeight" Value="14"/>
+        <Setter Property="CenterX" Value="{
+            Binding ActualWidth,
+            RelativeSource={RelativeSource AncestorType=Controls:RadialMenu},
+            FallbackValue=0,
+            Converter={StaticResource DoubleToHalfDouble}}"/>
+        <Setter Property="CenterY" Value="{
+            Binding ActualHeight,
+            RelativeSource={RelativeSource AncestorType=Controls:RadialMenu},
+            FallbackValue=0,
+            Converter={StaticResource DoubleToHalfDouble}}"/>
         <Setter Property="Panel.ZIndex" Value="0"/>
 
+        <!-- RadialMenuItem template -->
         <Setter Property="Template">
             <Setter.Value>
                 
                 <ControlTemplate TargetType="{x:Type Controls:RadialMenuItem}">
                     <Canvas Panel.ZIndex="{TemplateBinding Panel.ZIndex}">
 
+                        <!-- Main pie piece -->
                         <Controls:PieShape
-                            CenterX="155"
-                            CenterY="155"
+                            CenterX="{TemplateBinding CenterX}"
+                            CenterY="{TemplateBinding CenterY}"
                             Padding="{TemplateBinding Padding}"
                             OuterRadius="{TemplateBinding OuterRadius}"
                             InnerRadius="{TemplateBinding InnerRadius}"
@@ -63,14 +89,14 @@
                             Stroke="{TemplateBinding BorderBrush}">
                             
                             <Controls:PieShape.StartAngle>
-                                <MultiBinding Converter="{StaticResource IndexAndCountToStartAngle}">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToStartAngle}">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
                             </Controls:PieShape.StartAngle>
                             
                             <Controls:PieShape.AngleDelta>
-                                <MultiBinding Converter="{StaticResource IndexAndCountToAngleDelta}">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToAngleDelta}">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
@@ -78,9 +104,10 @@
                             
                         </Controls:PieShape>
 
+                        <!-- Edge pie piece -->
                         <Controls:PieShape
-                            CenterX="155"
-                            CenterY="155"
+                            CenterX="{TemplateBinding CenterX}"
+                            CenterY="{TemplateBinding CenterY}"
                             Padding="{TemplateBinding EdgePadding}"
                             OuterRadius="{TemplateBinding EdgeOuterRadius}"
                             InnerRadius="{TemplateBinding EdgeInnerRadius}"
@@ -89,14 +116,14 @@
                             Stroke="{TemplateBinding EdgeBorderBrush}">
                             
                             <Controls:PieShape.StartAngle>
-                                <MultiBinding Converter="{StaticResource IndexAndCountToStartAngle}">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToStartAngle}">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
                             </Controls:PieShape.StartAngle>
                             
                             <Controls:PieShape.AngleDelta>
-                                <MultiBinding Converter="{StaticResource IndexAndCountToAngleDelta}">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToAngleDelta}">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
@@ -104,18 +131,46 @@
                             
                         </Controls:PieShape>
 
-                        <Canvas Width="310" Height="310">
+                        <!-- Edge content (arrow) -->
+                        <Canvas>
+                            
                             <Canvas.RenderTransform>
-                                <RotateTransform CenterX="155" CenterY="155">
+                                <RotateTransform
+                                    CenterX="{Binding CenterX, RelativeSource={RelativeSource TemplatedParent}}"
+                                    CenterY="{Binding CenterY, RelativeSource={RelativeSource TemplatedParent}}">
+                                    
                                     <RotateTransform.Angle>
-                                        <MultiBinding Converter="{StaticResource IndexAndCountToRotation}">
+                                        <MultiBinding Converter="{StaticResource RadialMenuItemToRotation}">
                                             <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                             <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </RotateTransform.Angle>
+                                    
                                 </RotateTransform>
                             </Canvas.RenderTransform>
-                            <Rectangle Width="14" Height="14" Canvas.Left="148" Canvas.Top="5.5">
+                            
+                            <Rectangle Width="{TemplateBinding ArrowWidth}" Height="{TemplateBinding ArrowHeight}">
+
+                                <Canvas.Left>
+                                    <MultiBinding Converter="{StaticResource RadialMenuItemToArrowPosition}" ConverterParameter="X">
+                                        <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowRadius" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Canvas.Left>
+
+                                <Canvas.Top>
+                                    <MultiBinding Converter="{StaticResource RadialMenuItemToArrowPosition}" ConverterParameter="Y">
+                                        <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="ArrowRadius" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Canvas.Top>
+
                                 <Rectangle.Fill>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -129,24 +184,34 @@
                                         </VisualBrush.Visual>
                                     </VisualBrush>
                                 </Rectangle.Fill>
+                                
                             </Rectangle>
                         </Canvas>
 
+                        <!-- Main content -->
                         <ContentControl Content="{TemplateBinding Content}">
                             
                             <Canvas.Left>
-                                <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="X">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToContentPosition}" ConverterParameter="X">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
+                                    <Binding Path="Content.ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
+                                    <Binding Path="ContentRadius" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
                             </Canvas.Left>
                             
                             <Canvas.Top>
-                                <MultiBinding Converter="{StaticResource IndexCountAndSizeToPosition}" ConverterParameter="Y">
+                                <MultiBinding Converter="{StaticResource RadialMenuItemToContentPosition}" ConverterParameter="Y">
                                     <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
                                     <Binding Path="Content.ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
+                                    <Binding Path="ContentRadius" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
                             </Canvas.Top>
                             
@@ -157,6 +222,7 @@
                 
             </Setter.Value>
         </Setter>
+        
     </Style>
     
 </ResourceDictionary>

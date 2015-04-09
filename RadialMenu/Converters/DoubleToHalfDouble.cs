@@ -1,24 +1,19 @@
-﻿using RadialMenu.Controls;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
 using System.Windows.Data;
 
-
-namespace RadialMenuDemo.Utils
+namespace RadialMenu.Converters
 {
-    internal class Test : IValueConverter
+    internal class DoubleToHalfDouble : IValueConverter
     {
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            System.Diagnostics.Debug.WriteLine(value);
-            return value;
+            return (double)value / 2.0;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("DoubleToHalfDouble is a One-Way converter only !");
         }
     }
 }

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RadialMenuDemo.Utils
 {
     public class RelayCommand : ICommand
     {
-
         private Action action;
 
         private Func<bool> condition;

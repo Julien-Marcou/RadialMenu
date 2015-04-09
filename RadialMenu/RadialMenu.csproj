@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\RadialMenuCentralItem.cs" />
-    <Compile Include="Converters\IndexAndCountToAngleDelta.cs" />
-    <Compile Include="Converters\IndexAndCountToRotation.cs" />
-    <Compile Include="Converters\IndexCountAndSizeToPosition.cs" />
-    <Compile Include="Converters\IndexAndCountToStartAngle.cs" />
+    <Compile Include="Converters\RadialMenuItemToAngleDelta.cs" />
+    <Compile Include="Converters\RadialMenuItemToRotation.cs" />
+    <Compile Include="Converters\RadialMenuItemToArrowPosition.cs" />
+    <Compile Include="Converters\DoubleToHalfDouble.cs" />
+    <Compile Include="Converters\RadialMenuItemToContentPosition.cs" />
+    <Compile Include="Converters\RadialMenuItemToStartAngle.cs" />
     <Compile Include="Controls\PieShape.cs" />
     <Compile Include="Controls\RadialMenuItem.cs" />
     <Page Include="Themes\PieShape.xaml">

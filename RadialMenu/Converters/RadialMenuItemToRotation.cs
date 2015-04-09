@@ -4,13 +4,13 @@ using System.Windows.Data;
 
 namespace RadialMenu.Converters
 {
-    internal class IndexAndCountToRotation : IMultiValueConverter
+    internal class RadialMenuItemToRotation : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length != 2)
             {
-                throw new ArgumentException("IndexAndCountToRotation converter needs 2 values (int index, int count) !", "values");
+                throw new ArgumentException("RadialMenuItemToRotation converter needs 2 values (int index, int count) !", "values");
             }
 
             int sliceIndex = (int)values[0];
@@ -21,7 +21,7 @@ namespace RadialMenu.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new InvalidOperationException("IndexAndCountToRotation is a One-Way converter only !");
+            throw new InvalidOperationException("RadialMenuItemToRotation is a One-Way converter only !");
         }
     }
 }

@@ -9,16 +9,6 @@ namespace RadialMenu.Controls
     /// </summary>
     public class RadialMenuItem : Button
     {
-        public new static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(Panel), typeof(RadialMenuItem),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        public new Panel Content
-        {
-            get { return (Panel)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
         public static readonly DependencyProperty IndexProperty =
             DependencyProperty.Register("Index", typeof(int), typeof(RadialMenuItem),
             new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
@@ -37,6 +27,26 @@ namespace RadialMenu.Controls
         {
             get { return (int)GetValue(CountProperty); }
             set { SetValue(CountProperty, value); }
+        }
+
+        public static readonly DependencyProperty CenterXProperty =
+            DependencyProperty.Register("CenterX", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double CenterX
+        {
+            get { return (double)GetValue(CenterXProperty); }
+            set { SetValue(CenterXProperty, value); }
+        }
+
+        public static readonly DependencyProperty CenterYProperty =
+            DependencyProperty.Register("CenterY", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double CenterY
+        {
+            get { return (double)GetValue(CenterYProperty); }
+            set { SetValue(CenterYProperty, value); }
         }
 
         public static readonly DependencyProperty OuterRadiusProperty =
@@ -67,6 +77,26 @@ namespace RadialMenu.Controls
         {
             get { return (double)GetValue(PaddingProperty); }
             set { SetValue(PaddingProperty, value); }
+        }
+
+        public new static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("Content", typeof(Panel), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public new Panel Content
+        {
+            get { return (Panel)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentRadiusProperty =
+            DependencyProperty.Register("ContentRadius", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double ContentRadius
+        {
+            get { return (double)GetValue(ContentRadiusProperty); }
+            set { SetValue(ContentRadiusProperty, value); }
         }
 
         public static readonly DependencyProperty EdgeOuterRadiusProperty =
@@ -157,6 +187,36 @@ namespace RadialMenu.Controls
         {
             get { return (Brush)GetValue(ArrowBorderBrushProperty); }
             set { SetValue(ArrowBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ArrowWidthProperty =
+            DependencyProperty.Register("ArrowWidth", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double ArrowWidth
+        {
+            get { return (double)GetValue(ArrowWidthProperty); }
+            set { SetValue(ArrowWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ArrowHeightProperty =
+            DependencyProperty.Register("ArrowHeight", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double ArrowHeight
+        {
+            get { return (double)GetValue(ArrowHeightProperty); }
+            set { SetValue(ArrowHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ArrowRadiusProperty =
+            DependencyProperty.Register("ArrowRadius", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double ArrowRadius
+        {
+            get { return (double)GetValue(ArrowRadiusProperty); }
+            set { SetValue(ArrowRadiusProperty, value); }
         }
 
         static RadialMenuItem()
