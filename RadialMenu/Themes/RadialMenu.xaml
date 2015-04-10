@@ -56,8 +56,14 @@
                     <Grid>
                         
                         <!-- Content repitition (for items around) -->
-                        <ItemsControl ItemsSource="{TemplateBinding Content}"/>
-                        
+                        <ItemsControl ItemsSource="{TemplateBinding Content}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid></Grid>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
                         <!-- Content (for central item) -->
                         <ContentPresenter Content="{TemplateBinding CentralItem}"/>
                         

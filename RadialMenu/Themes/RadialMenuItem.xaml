@@ -45,6 +45,10 @@
         </Style.Triggers>
 
         <!-- Default RadialMenuItem style -->
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Height" Value="300"/>
+        <Setter Property="CenterX" Value="150"/>
+        <Setter Property="CenterY" Value="150"/>
         <Setter Property="InnerRadius" Value="30"/>
         <Setter Property="OuterRadius" Value="150"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -58,16 +62,6 @@
         <Setter Property="ArrowRadius" Value="142.5"/>
         <Setter Property="ArrowWidth" Value="14"/>
         <Setter Property="ArrowHeight" Value="14"/>
-        <Setter Property="CenterX" Value="{
-            Binding ActualWidth,
-            RelativeSource={RelativeSource AncestorType=Controls:RadialMenu},
-            FallbackValue=0,
-            Converter={StaticResource DoubleToHalfDouble}}"/>
-        <Setter Property="CenterY" Value="{
-            Binding ActualHeight,
-            RelativeSource={RelativeSource AncestorType=Controls:RadialMenu},
-            FallbackValue=0,
-            Converter={StaticResource DoubleToHalfDouble}}"/>
         <Setter Property="Panel.ZIndex" Value="0"/>
 
         <!-- RadialMenuItem template -->
@@ -75,7 +69,7 @@
             <Setter.Value>
                 
                 <ControlTemplate TargetType="{x:Type Controls:RadialMenuItem}">
-                    <Canvas Panel.ZIndex="{TemplateBinding Panel.ZIndex}">
+                    <Canvas Panel.ZIndex="{TemplateBinding Panel.ZIndex}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
                         <!-- Main pie piece -->
                         <Controls:PieShape
