@@ -15,63 +15,70 @@ then into your Xaml View, import the custom control
 
 To create the **main component** of the RadialMenu, simply type
 
-    <Controls:RadialMenu>
-        ...
-    </Controls:RadialMenu>
+```xml
+<Controls:RadialMenu>
+    ...
+</Controls:RadialMenu>
+```
 
 To create the **central menu item** of the RadialMenu, simply type
 
-    <Controls:RadialMenuCentralItem>
-        ...
-    </Controls:RadialMenuCentralItem>
-
+```xaml
+<Controls:RadialMenuCentralItem>
+    ...
+</Controls:RadialMenuCentralItem>
+```
 
 To create a **menu item** of the RadialMenu, simply type
 
-    <Controls:RadialMenuItem>
-        ...
-    </Controls:RadialMenuItem>
+```xaml
+<Controls:RadialMenuItem>
+    ...
+</Controls:RadialMenuItem>
+```
 
 Full example
 -----------
 
 A tipical example of what can be done
 
-    <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
+```xaml
+<RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
 
-        <!-- CentralMenuItem -->
+    <!-- CentralMenuItem -->
 
-        <RadialMenu:RadialMenu.CentralItem>
-            <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenuCommand}">
-                <TextBlock>Close</TextBlock>
-            </RadialMenu:RadialMenuCentralItem>
-        </RadialMenu:RadialMenu.CentralItem>
+    <RadialMenu:RadialMenu.CentralItem>
+        <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenuCommand}">
+            <TextBlock>Close</TextBlock>
+        </RadialMenu:RadialMenuCentralItem>
+    </RadialMenu:RadialMenu.CentralItem>
 
-        <!-- MenuItems Around -->
+    <!-- MenuItems Around -->
 
-        <RadialMenu:RadialMenuItem Command="{Binding NewFileCommand}">
-            <TextBlock>New file</TextBlock>
-        </RadialMenu:RadialMenuItem>
+    <RadialMenu:RadialMenuItem Command="{Binding NewFileCommand}">
+        <TextBlock>New file</TextBlock>
+    </RadialMenu:RadialMenuItem>
 
-        <RadialMenu:RadialMenuItem Command="{Binding EditCommand}">
-            <TextBlock>Edit</TextBlock>
-        </RadialMenu:RadialMenuItem>
+    <RadialMenu:RadialMenuItem Command="{Binding EditCommand}">
+        <TextBlock>Edit</TextBlock>
+    </RadialMenu:RadialMenuItem>
 
-        <RadialMenu:RadialMenuItem Command="{Binding SaveCommand}">
-            <TextBlock>Save</TextBlock>
-        </RadialMenu:RadialMenuItem>
+    <RadialMenu:RadialMenuItem Command="{Binding SaveCommand}">
+        <TextBlock>Save</TextBlock>
+    </RadialMenu:RadialMenuItem>
 
-        <RadialMenu:RadialMenuItem Command="{Binding DeleteCommand}">
-            <TextBlock>Delete</TextBlock>
-        </RadialMenu:RadialMenuItem>
+    <RadialMenu:RadialMenuItem Command="{Binding DeleteCommand}">
+        <TextBlock>Delete</TextBlock>
+    </RadialMenu:RadialMenuItem>
 
-        <RadialMenu:RadialMenuItem Command="{Binding ExitCommand}">
-            <TextBlock>Exit</TextBlock>
-        </RadialMenu:RadialMenuItem>
+    <RadialMenu:RadialMenuItem Command="{Binding ExitCommand}">
+        <TextBlock>Exit</TextBlock>
+    </RadialMenu:RadialMenuItem>
 
-        <!-- Add items as you want... -->
+    <!-- Add items as you want... -->
 
-    </RadialMenu:RadialMenu>
+</RadialMenu:RadialMenu>
+```
 
 which results in
 
@@ -82,33 +89,35 @@ Customization
 
 You can even create your own style of RadialMenu (do not forget to add style for `disabled`, `hovered` and `pressed` item states)
 
-    <Style x:Key="FancyRadialMenuCentralItem" TargetType="Controls:RadialMenuCentralItem">
+```xaml
+<Style x:Key="FancyRadialMenuCentralItem" TargetType="Controls:RadialMenuCentralItem">
 
-        <Setter Property="Background" Value="AliceBlue"/>
-        <Setter Property="BorderBrush" Value="DarkBlue"/>
-        <Setter Property="BorderThickness" Value="4"/>
-        <Setter Property="Width" Value="64"/>
-        <Setter Property="Height" Value="64"/>
+    <Setter Property="Background" Value="AliceBlue"/>
+    <Setter Property="BorderBrush" Value="DarkBlue"/>
+    <Setter Property="BorderThickness" Value="4"/>
+    <Setter Property="Width" Value="64"/>
+    <Setter Property="Height" Value="64"/>
 
-    </Style>
+</Style>
 
-    <Style x:Key="FancyRadialMenuItem" TargetType="Controls:RadialMenuItem">
+<Style x:Key="FancyRadialMenuItem" TargetType="Controls:RadialMenuItem">
 
-        <Setter Property="Background" Value="AliceBlue"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="InnerRadius" Value="40"/>
-        <Setter Property="OuterRadius" Value="150"/>
-        <Setter Property="ContentRadius" Value="85"/>
+    <Setter Property="Background" Value="AliceBlue"/>
+    <Setter Property="Padding" Value="2"/>
+    <Setter Property="InnerRadius" Value="40"/>
+    <Setter Property="OuterRadius" Value="150"/>
+    <Setter Property="ContentRadius" Value="85"/>
 
-        <Setter Property="EdgeBackground" Value="DarkBlue"/>
-        <Setter Property="EdgePadding" Value="7"/>
-        <Setter Property="EdgeInnerRadius" Value="130"/>
-        <Setter Property="EdgeOuterRadius" Value="145"/>
+    <Setter Property="EdgeBackground" Value="DarkBlue"/>
+    <Setter Property="EdgePadding" Value="7"/>
+    <Setter Property="EdgeInnerRadius" Value="130"/>
+    <Setter Property="EdgeOuterRadius" Value="145"/>
 
-        <Setter Property="ArrowBackground" Value="Cyan"/>
-        <Setter Property="ArrowRadius" Value="138"/>
+    <Setter Property="ArrowBackground" Value="Cyan"/>
+    <Setter Property="ArrowRadius" Value="138"/>
 
-    </Style>
+</Style>
+```
 
 which results in
 
