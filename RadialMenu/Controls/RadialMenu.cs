@@ -30,16 +30,6 @@ namespace RadialMenu.Controls
             set { SetValue(CentralItemProperty, value); }
         }
 
-        public static readonly DependencyProperty CentralMenuCommandProperty =
-            DependencyProperty.Register("CentralMenuCommand", typeof(ICommand), typeof(RadialMenu),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        public ICommand CentralMenuCommand
-        {
-            get { return (ICommand)GetValue(CentralMenuCommandProperty); }
-            set { SetValue(CentralMenuCommandProperty, value); }
-        }
-
         public new static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(List<RadialMenuItem>), typeof(RadialMenu),
             new FrameworkPropertyMetadata(new List<RadialMenuItem>(), FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
