@@ -129,16 +129,22 @@
                         <Canvas>
                             
                             <Canvas.RenderTransform>
-                                <RotateTransform
-                                    CenterX="{Binding CenterX, RelativeSource={RelativeSource TemplatedParent}}"
-                                    CenterY="{Binding CenterY, RelativeSource={RelativeSource TemplatedParent}}">
-                                    
+                                <RotateTransform>
+
                                     <RotateTransform.Angle>
                                         <MultiBinding Converter="{StaticResource RadialMenuItemToRotation}">
                                             <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
                                             <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </RotateTransform.Angle>
+
+                                    <RotateTransform.CenterX>
+                                        <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </RotateTransform.CenterX>
+
+                                    <RotateTransform.CenterY>
+                                        <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </RotateTransform.CenterY>
                                     
                                 </RotateTransform>
                             </Canvas.RenderTransform>
