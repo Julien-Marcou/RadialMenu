@@ -32,7 +32,7 @@ namespace RadialMenu.Controls
 
         public new static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(List<RadialMenuItem>), typeof(RadialMenu),
-            new FrameworkPropertyMetadata(new List<RadialMenuItem>(), FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public new List<RadialMenuItem> Content
         {
@@ -48,6 +48,12 @@ namespace RadialMenu.Controls
         static RadialMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RadialMenu), new FrameworkPropertyMetadata(typeof(RadialMenu)));
+        }
+
+        public override void BeginInit()
+        {
+            Content = new List<RadialMenuItem>();
+            base.BeginInit();
         }
 
         protected override Size ArrangeOverride(Size arrangeSize)

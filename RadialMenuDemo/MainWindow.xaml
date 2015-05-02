@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary Source="Utils/Icons.xaml"/>
     </Window.Resources>
-    
+
     <Grid>
         <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
 
@@ -103,5 +103,5 @@
 
         </RadialMenu:RadialMenu>
     </Grid>
-    
+
 </Window>

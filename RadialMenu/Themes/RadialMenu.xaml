@@ -7,7 +7,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsOpen" Value="True">
-                
+
                 <!-- RadialMenu openning animation -->
                 <Trigger.EnterActions>
                     <BeginStoryboard>
@@ -31,7 +31,7 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
-                
+
             </Trigger>
         </Style.Triggers>
 
@@ -51,10 +51,10 @@
         <!-- RadialMenu template -->
         <Setter Property="Template">
             <Setter.Value>
-                
+
                 <ControlTemplate TargetType="{x:Type Controls:RadialMenu}">
                     <Grid>
-                        
+
                         <!-- Content repitition (for items around) -->
                         <ItemsControl ItemsSource="{TemplateBinding Content}">
                             <ItemsControl.ItemsPanel>
@@ -66,13 +66,13 @@
 
                         <!-- Content (for central item) -->
                         <ContentPresenter Content="{TemplateBinding CentralItem}"/>
-                        
+
                     </Grid>
                 </ControlTemplate>
-                
+
             </Setter.Value>
         </Setter>
-        
+
     </Style>
-    
+
 </ResourceDictionary>
