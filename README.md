@@ -122,3 +122,19 @@ You can even create your own style of RadialMenu (do not forget to add style for
 which results in
 
 ![RadialMenu Custom](https://raw.githubusercontent.com/Julien-Marcou/RadialMenu/master/Resources/RadialMenuCustom.png)
+
+Advanced Usage
+-----------
+-	The radial menu will not scale by default (and transform controls will break it).  To modify the size you want to adjust the Radius properties on the style.  You will most likely need to adjust OuterRadius,ContentRadius,EdgeInnerRadius,EdgeOuterRadius, and ArrowRadius to resize the control
+-	When creating RadialMenuItems try to stick the text in a TextBlock for the best formatting results
+-	You can hide the arrow on a RadialMenuItem by setting its ArrowRadius to 0
+-	To update the control from code behind after creation you cannot simply update the radialMenu.Items list you must replace it with a new collection.  For example:
+````
+radialMenu.Items = new List<RadialMenuItem> {new RadialMenuItem {Content=new TextBlock {Text="Hello"} } };
+````
+-	You can easily create and multi-level radial menus by using the arrow as a visual queue and then replacing the items with an updated set.  For example:
+````
+			var SubItem = new RadialMenuItem { Content = new TextBlock { Text = "Sub Menu" },ArrowRadius = 0};
+			SubItem.Click += async (sender, args) => { radTest.IsOpen = false;await Task.Delay(400);radTest.Items = new List<RadialMenuItem> { new RadialMenuItem { Content = new TextBlock { Text = "Sub Menu" } } };radTest.IsOpen = true; };
+			radTest.Items = new List<RadialMenuItem> { new RadialMenuItem { Content = new TextBlock { Text = "Test1" }, ArrowRadius = 0 },SubItem }; ;
+````
