@@ -6,19 +6,27 @@
     <Style TargetType="{x:Type Controls:RadialMenu}">
 
         <Style.Triggers>
-			<Trigger Property="IsOpen" Value="False">
-				<Setter Property="Visibility" Value="Collapsed" />
-			</Trigger>
             <Trigger Property="IsOpen" Value="True">
-				<Setter Property="Visibility" Value="Visible" />
+
                 <!-- RadialMenu openning animation -->
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX" From="0.5" To="1" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY" From="0.5" To="1" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[1].Angle" From="-50" To="0" Duration="0:0:0.4"/>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                                <EasingDoubleKeyFrame Value="1" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX">
+                                <EasingDoubleKeyFrame Value="1" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY">
+                                <EasingDoubleKeyFrame Value="1" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[1].Angle">
+                                <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -27,10 +35,21 @@
                 <Trigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX" From="1" To="0.5" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY" From="1" To="0.5" Duration="0:0:0.4"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Children[1].Angle" From="0" To="-50" Duration="0:0:0.4"/>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                                <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX">
+                                <EasingDoubleKeyFrame Value="0.5" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY">
+                                <EasingDoubleKeyFrame Value="0.5" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[1].Angle">
+                                <EasingDoubleKeyFrame Value="-50" KeyTime="0:0:0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Collapsed}"/>
+                            </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
@@ -46,7 +65,7 @@
             <Setter.Value>
                 <TransformGroup>
                     <ScaleTransform CenterX="150" CenterY="150" ScaleX="0.5" ScaleY="0.5"/>
-                    <RotateTransform CenterX="150" CenterY="150" Angle="45"/>
+                    <RotateTransform CenterX="150" CenterY="150" Angle="-50"/>
                 </TransformGroup>
             </Setter.Value>
         </Setter>
