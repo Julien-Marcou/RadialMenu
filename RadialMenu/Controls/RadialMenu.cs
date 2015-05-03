@@ -43,6 +43,7 @@ namespace RadialMenu.Controls
         public List<RadialMenuItem> Items
         {
             get { return Content; }
+            set { Content = value; }
         }
 
         static RadialMenu()
