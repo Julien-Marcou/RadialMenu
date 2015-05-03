@@ -49,7 +49,9 @@ namespace RadialMenu.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RadialMenu), new FrameworkPropertyMetadata(typeof(RadialMenu)));
         }
-
+		public void UpdateRadialItems(IEnumerable<RadialMenuItem> items ) {
+			Content = new List<RadialMenuItem>(items);
+		}
         public override void BeginInit()
         {
             Content = new List<RadialMenuItem>();
