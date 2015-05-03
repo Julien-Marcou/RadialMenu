@@ -87,10 +87,10 @@ which results in
 Customization
 -----------
 
-You can even create your own style of RadialMenu (do not forget to add style for `disabled`, `hovered` and `pressed` item states)
+You can even create your own style of RadialMenu (do not forget to add style for `disabled`, `hovered` and `pressed` item states if desired)
 
 ```xaml
-<Style x:Key="FancyRadialMenuCentralItem" TargetType="Controls:RadialMenuCentralItem">
+<Style x:Key="FancyRadialMenuCentralItem" TargetType="Controls:RadialMenuCentralItem" BasedOn="{StaticResource {x:Type Controls:RadialMenuCentralItem}}">
 
     <Setter Property="Background" Value="AliceBlue"/>
     <Setter Property="BorderBrush" Value="DarkBlue"/>
@@ -100,7 +100,7 @@ You can even create your own style of RadialMenu (do not forget to add style for
 
 </Style>
 
-<Style x:Key="FancyRadialMenuItem" TargetType="Controls:RadialMenuItem">
+<Style x:Key="FancyRadialMenuItem" TargetType="Controls:RadialMenuItem" BasedOn="{StaticResource {x:Type Controls:RadialMenuItem}}">
 
     <Setter Property="Background" Value="AliceBlue"/>
     <Setter Property="Padding" Value="2"/>
