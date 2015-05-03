@@ -11,6 +11,7 @@
     </Window.Resources>
 
     <Grid>
+		<Button Content="Open Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Command="{Binding OpenRadialMenu}" />		
         <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
 
             <RadialMenu:RadialMenu.CentralItem>

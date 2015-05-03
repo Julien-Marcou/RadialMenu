@@ -6,8 +6,11 @@
     <Style TargetType="{x:Type Controls:RadialMenu}">
 
         <Style.Triggers>
+			<Trigger Property="IsOpen" Value="False">
+				<Setter Property="Visibility" Value="Collapsed" />
+			</Trigger>
             <Trigger Property="IsOpen" Value="True">
-
+				<Setter Property="Visibility" Value="Visible" />
                 <!-- RadialMenu openning animation -->
                 <Trigger.EnterActions>
                     <BeginStoryboard>
