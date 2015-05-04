@@ -27,10 +27,10 @@
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
                             </ObjectAnimationUsingKeyFrames>
-							<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Duration="0:0:0.5" FillBehavior="HoldEnd">
-								<DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
-								<DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:0.5" />
-							</BooleanAnimationUsingKeyFrames>
+                            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Duration="0:0:0.5" FillBehavior="HoldEnd">
+                                <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
+                                <DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:0.5" />
+                            </BooleanAnimationUsingKeyFrames>
 
                         </Storyboard>
                     </BeginStoryboard>
@@ -55,10 +55,10 @@
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Collapsed}"/>
                             </ObjectAnimationUsingKeyFrames>
-							<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Duration="0:0:0" FillBehavior="HoldEnd">
-								<DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
-							</BooleanAnimationUsingKeyFrames>
-							
+                            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Duration="0:0:0" FillBehavior="HoldEnd">
+                                <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
+                            </BooleanAnimationUsingKeyFrames>
+                            
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
