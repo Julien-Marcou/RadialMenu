@@ -78,6 +78,9 @@
                 <ControlTemplate TargetType="{x:Type Controls:RadialMenu}">
                     <Grid>
 
+                        <!-- RadialMenu background -->
+                        <Ellipse Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
+
                         <!-- Content repitition (for items around) -->
                         <ItemsControl ItemsSource="{TemplateBinding Content}">
                             <ItemsControl.ItemsPanel>
