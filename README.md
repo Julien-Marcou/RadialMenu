@@ -132,7 +132,7 @@ Advanced Usage
 - To update the control from code behind after creation you cannot simply update the radialMenu.Items list, you must replace it with a new collection.  For example:
 
 ```csharp
-radialMenu.Items = new List<RadialMenuItem>
+MyRadialMenu.Items = new List<RadialMenuItem>
 {
     new RadialMenuItem
     {
@@ -152,7 +152,7 @@ You can easily create multi-level radial menus by using the arrow as a visual qu
 
 ```xaml
 <RadialMenu:RadialMenu x:Name="MyRadialMenu" IsOpen="{Binding IsOpen}">
-    // ...
+    ...
 </RadialMenu:RadialMenu>
 ```
 
@@ -211,4 +211,4 @@ MyRadialMenu.Items = MainMenuItems;
 
 Which results in
 
-![RadialMenu Multi-Levels](https://raw.githubusercontent.com/Julien-Marcou/RadialMenu/master/Resources/RadialMenuMultiLevels.png)
+![RadialMenu Multi-Levels](https://raw.githubusercontent.com/Julien-Marcou/RadialMenu/master/Resources/RadialMenuMultiLevels.gif)
