@@ -59,6 +59,7 @@
 
         <!-- Default RadialMenu style (while closed) -->
         <Setter Property="Opacity" Value="0"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
         <Setter Property="Height" Value="300"/>
         <Setter Property="Width" Value="300"/>
         <Setter Property="RenderTransform">
