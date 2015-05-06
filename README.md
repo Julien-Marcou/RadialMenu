@@ -15,7 +15,7 @@ then into your Xaml View, import the custom control
 
 To create the **main component** of the RadialMenu, simply type
 
-```xml
+```xaml
 <Controls:RadialMenu>
     ...
 </Controls:RadialMenu>
@@ -125,16 +125,90 @@ which results in
 
 Advanced Usage
 -----------
--	The radial menu will not scale by default (and transform controls will break it).  To modify the size you want to adjust the Radius properties on the style.  You will most likely need to adjust OuterRadius,ContentRadius,EdgeInnerRadius,EdgeOuterRadius, and ArrowRadius to resize the control
--	When creating RadialMenuItems try to stick the text in a TextBlock for the best formatting results
--	You can hide the arrow on a RadialMenuItem by setting its ArrowRadius to 0
--	To update the control from code behind after creation you cannot simply update the radialMenu.Items list you must replace it with a new collection.  For example:
-````
-radialMenu.Items = new List<RadialMenuItem> {new RadialMenuItem {Content=new TextBlock {Text="Hello"} } };
-````
--	You can easily create and multi-level radial menus by using the arrow as a visual queue and then replacing the items with an updated set.  For example:
-````
-			var SubItem = new RadialMenuItem { Content = new TextBlock { Text = "Sub Menu" },ArrowRadius = 0};
-			SubItem.Click += async (sender, args) => { radTest.IsOpen = false;await Task.Delay(400);radTest.Items = new List<RadialMenuItem> { new RadialMenuItem { Content = new TextBlock { Text = "Sub Menu" } } };radTest.IsOpen = true; };
-			radTest.Items = new List<RadialMenuItem> { new RadialMenuItem { Content = new TextBlock { Text = "Test1" }, ArrowRadius = 0 },SubItem }; ;
-````
+
+- The radial menu will not scale by default (and transform controls will break it).  To modify the size you want to adjust the Radius properties on the style.  You will most likely need to adjust OuterRadius, ContentRadius, EdgeInnerRadius, EdgeOuterRadius, and ArrowRadius to resize the control
+- When creating RadialMenuItems try to stick the text in a TextBlock for the best formatting results
+- You can hide the arrow on a RadialMenuItem by setting its ArrowBackground to Transparent
+- To update the control from code behind after creation you cannot simply update the radialMenu.Items list, you must replace it with a new collection.  For example:
+
+```csharp
+radialMenu.Items = new List<RadialMenuItem>
+{
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Hello" }
+    },
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "World" }
+    }
+};
+```
+
+Multi-level menu
+-----------
+
+You can easily create multi-level radial menus by using the arrow as a visual queue and then replacing the items with an updated set.  For example:
+
+```xaml
+<RadialMenu:RadialMenu x:Name="MyRadialMenu" IsOpen="{Binding IsOpen}">
+    // ...
+</RadialMenu:RadialMenu>
+```
+
+```csharp
+// Main menu
+var MainMenuItems = new List<RadialMenuItem>
+{
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Item 1" },
+        ArrowBackground = Brushes.Transparent
+    },
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Item 2" },
+        ArrowBackground = Brushes.Transparent
+    },
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Sub Menu" }
+    }
+};
+
+// Sub menu
+var SubMenuItems = new List<RadialMenuItem>
+{
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Sub Item 1" },
+        ArrowBackground = Brushes.Transparent
+    },
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Sub Item 2" },
+        ArrowBackground = Brushes.Transparent
+    },
+    new RadialMenuItem
+    {
+        Content = new TextBlock { Text = "Sub Item 3" },
+        ArrowBackground = Brushes.Transparent
+    }
+};
+
+// Go to Sub menu when clicking on the third item
+MainMenuItems[2].Click += async (sender, args) =>
+{
+    IsOpen = false;
+    await Task.Delay(400);
+    MyRadialMenu.Items = SubMenuItems;
+    IsOpen = true;
+};
+
+// Set default menu to Main menu
+MyRadialMenu.Items = MainMenuItems;
+```
+
+Which results in
+
+![RadialMenu Multi-Levels](https://raw.githubusercontent.com/Julien-Marcou/RadialMenu/master/Resources/RadialMenuMultiLevels.png)
