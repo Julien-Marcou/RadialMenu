@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using RadialMenuDemo.Utils;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using System.Runtime.CompilerServices;
-using RadialMenuDemo.Utils;
 
 namespace RadialMenuDemo
 {

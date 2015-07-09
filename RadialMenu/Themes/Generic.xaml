@@ -8,5 +8,5 @@
         <ResourceDictionary Source="/RadialMenu;component/Themes/RadialMenuCentralItem.xaml"/>
         <ResourceDictionary Source="/RadialMenu;component/Themes/RadialMenuItem.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
 </ResourceDictionary>

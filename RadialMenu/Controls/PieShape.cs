@@ -161,7 +161,7 @@ namespace RadialMenu.Controls
             Size innerArcSize = new Size(InnerRadius, InnerRadius);
 
             // If have to draw a full-circle, draws two semi-circles, because 'ArcTo()' can not draw a full-circle
-            if(AngleDelta >= 360 && Padding <= 0)
+            if (AngleDelta >= 360 && Padding <= 0)
             {
                 Point outerArcTopPoint = ComputeCartesianCoordinate(arcCenter, outerStartAngle, OuterRadius + PushOut);
                 Point outerArcBottomPoint = ComputeCartesianCoordinate(arcCenter, outerStartAngle + 180, OuterRadius + PushOut);
