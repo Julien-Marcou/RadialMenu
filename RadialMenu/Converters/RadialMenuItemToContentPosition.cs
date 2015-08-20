@@ -9,9 +9,9 @@ namespace RadialMenu.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length != 7)
+            if (values.Length != 8)
             {
-                throw new ArgumentException("RadialMenuItemToContentPosition converter needs 7 values (int index, int count, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", "values");
+                throw new ArgumentException("RadialMenuItemToContentPosition converter needs 8 values (int index, int count, bool halfShifted, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", "values");
             }
             if (parameter == null)
             {
@@ -27,14 +27,16 @@ namespace RadialMenu.Converters
 
             int index = (int)values[0];
             int count = (int)values[1];
-            double centerX = (double)values[2];
-            double centerY = (double)values[3];
-            double contentWidth = (double)values[4];
-            double contentHeight = (double)values[5];
-            double contentRadius = (double)values[6];
+            bool halfShifted = (bool)values[2];
+            double centerX = (double)values[3];
+            double centerY = (double)values[4];
+            double contentWidth = (double)values[5];
+            double contentHeight = (double)values[6];
+            double contentRadius = (double)values[7];
 
             double angleDelta = 360.0 / count;
-            double startAngle = 360.0 / count * index;
+            double angleShift = halfShifted  ? - angleDelta / 2 : 0;
+            double startAngle = 360.0 / count * index + angleShift;
             double angle = startAngle + (angleDelta / 2);
 
             Point contentPosition = ComputeCartesianCoordinate(new Point(centerX, centerY), angle, contentRadius);

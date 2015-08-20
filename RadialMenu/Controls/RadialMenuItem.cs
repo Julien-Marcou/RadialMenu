@@ -29,6 +29,16 @@ namespace RadialMenu.Controls
             set { SetValue(CountProperty, value); }
         }
 
+        public static readonly DependencyProperty HalfShiftedProperty =
+            DependencyProperty.Register("HalfShifted", typeof(bool), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, UpdateItemRendering));
+
+        public bool HalfShifted
+        {
+            get { return (bool)GetValue(HalfShiftedProperty); }
+            set { SetValue(HalfShiftedProperty, value); }
+        }
+
         public static readonly DependencyProperty CenterXProperty =
             DependencyProperty.Register("CenterX", typeof(double), typeof(RadialMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
@@ -255,9 +265,14 @@ namespace RadialMenu.Controls
             RadialMenuItem item = d as RadialMenuItem;
             if (item != null)
             {
-                item.StartAngle = 360.0 / item.Count * item.Index;
-                item.AngleDelta = 360.0 / item.Count;
-                item.Rotation = item.StartAngle + item.AngleDelta / 2;
+                var angleDelta = 360.0 / item.Count;
+                var angleShift = item.HalfShifted ? -angleDelta / 2 : 0;
+                var startAngle = angleDelta * item.Index + angleShift;
+                var rotation = startAngle + angleDelta / 2;
+
+                item.AngleDelta = angleDelta;
+                item.StartAngle = startAngle;
+                item.Rotation = rotation;
             }
         }
     }

@@ -17,14 +17,111 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Button Content="Open Menu" Command="{Binding OpenRadialMenu}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40 10" Margin="10"/>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Open Default" Command="{Binding OpenRadialMenu1}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40 10" Margin="10"/>
+                <Button Content="Open Half-Shifted" Command="{Binding OpenRadialMenu2}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40 10" Margin="10"/>
+            </WrapPanel>
         </Grid>
 
         <Grid Grid.Row="1">
-            <RadialMenu:RadialMenu IsOpen="{Binding IsOpen}">
+            <RadialMenu:RadialMenu IsOpen="{Binding IsOpen1}">
 
                 <RadialMenu:RadialMenu.CentralItem>
-                    <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenu}">
+                    <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenu1}">
+                        <Rectangle Width="25" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_close}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </RadialMenu:RadialMenuCentralItem>
+                </RadialMenu:RadialMenu.CentralItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test1}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="25" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_add}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Ajouter
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test2}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="25" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_edit}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Édition
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test3}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="23" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_save}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Sauvegarder
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test4}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="20" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_delete}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Supprimer
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test5}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="20" Height="25">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_page}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Nouvelle page
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+                <RadialMenu:RadialMenuItem Command="{Binding Test6}">
+                    <WrapPanel Orientation="Vertical">
+                        <Rectangle Width="19" Height="26">
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_upload}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="14" TextAlignment="Center">
+                            Partager
+                        </TextBlock>
+                    </WrapPanel>
+                </RadialMenu:RadialMenuItem>
+
+            </RadialMenu:RadialMenu>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <RadialMenu:RadialMenu IsOpen="{Binding IsOpen2}" HalfShiftedItems="True">
+
+                <RadialMenu:RadialMenu.CentralItem>
+                    <RadialMenu:RadialMenuCentralItem Command="{Binding CloseRadialMenu2}">
                         <Rectangle Width="25" Height="25">
                             <Rectangle.Fill>
                                 <VisualBrush Visual="{StaticResource appbar_close}"/>

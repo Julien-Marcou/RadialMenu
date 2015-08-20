@@ -11,33 +11,61 @@ namespace RadialMenuDemo
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-
-        private bool _isOpen = false;
-        public bool IsOpen
+        private bool _isOpen1 = false;
+        public bool IsOpen1
         {
             get
             {
-                return _isOpen;
+                return _isOpen1;
             }
             set
             {
-                _isOpen = value;
+                _isOpen1 = value;
                 RaisePropertyChanged();
             }
         }
 
-        public ICommand CloseRadialMenu
+        private bool _isOpen2 = false;
+        public bool IsOpen2
         {
             get
             {
-                return new RelayCommand(() => IsOpen = false);
+                return _isOpen2;
+            }
+            set
+            {
+                _isOpen2 = value;
+                RaisePropertyChanged();
             }
         }
-        public ICommand OpenRadialMenu
+
+        public ICommand CloseRadialMenu1
         {
             get
             {
-                return new RelayCommand(() => IsOpen = true);
+                return new RelayCommand(() => IsOpen1 = false);
+            }
+        }
+        public ICommand OpenRadialMenu1
+        {
+            get
+            {
+                return new RelayCommand(() => { IsOpen1 = true; IsOpen2 = false; });
+            }
+        }
+
+        public ICommand CloseRadialMenu2
+        {
+            get
+            {
+                return new RelayCommand(() => IsOpen2 = false);
+            }
+        }
+        public ICommand OpenRadialMenu2
+        {
+            get
+            {
+                return new RelayCommand(() => { IsOpen2 = true; IsOpen1 = false; });
             }
         }
 
@@ -92,7 +120,7 @@ namespace RadialMenuDemo
                     },
                     () =>
                     {
-                        return false;
+                        return false; // To disable the 6th item
                     }
                 );
             }
@@ -106,7 +134,7 @@ namespace RadialMenuDemo
 
         private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            OpenRadialMenu.Execute(null);
+            OpenRadialMenu1.Execute(null);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

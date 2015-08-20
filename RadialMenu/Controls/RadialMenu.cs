@@ -19,6 +19,16 @@ namespace RadialMenu.Controls
             set { SetValue(IsOpenProperty, value); }
         }
 
+        public static readonly DependencyProperty HalfShiftedItemsProperty =
+            DependencyProperty.Register("HalfShiftedItems", typeof(bool), typeof(RadialMenu),
+            new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public bool HalfShiftedItems
+        {
+            get { return (bool)GetValue(HalfShiftedItemsProperty); }
+            set { SetValue(HalfShiftedItemsProperty, value); }
+        }
+
         public static readonly DependencyProperty CentralItemProperty =
             DependencyProperty.Register("CentralItem", typeof(RadialMenuCentralItem), typeof(RadialMenu),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
@@ -62,6 +72,7 @@ namespace RadialMenu.Controls
             {
                 Items[i].Index = i;
                 Items[i].Count = count;
+                Items[i].HalfShifted = HalfShiftedItems;
             }
             return base.ArrangeOverride(arrangeSize);
         }
