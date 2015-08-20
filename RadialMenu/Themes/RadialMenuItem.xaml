@@ -97,7 +97,9 @@
                         <Canvas>
 
                             <Canvas.RenderTransform>
+                                <!-- See : http://stackoverflow.com/a/3190907/2837434 -->
                                 <RotateTransform
+                                    x:Name="BindingErrorFix"
                                     Angle="{Binding Rotation, RelativeSource={RelativeSource TemplatedParent}}"
                                     CenterX="{Binding CenterX, RelativeSource={RelativeSource TemplatedParent}}"
                                     CenterY="{Binding CenterY, RelativeSource={RelativeSource TemplatedParent}}"/>
