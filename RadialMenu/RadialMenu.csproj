@@ -49,12 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\RadialMenuCentralItem.cs" />
-    <Compile Include="Converters\RadialMenuItemToAngleDelta.cs" />
-    <Compile Include="Converters\RadialMenuItemToRotation.cs" />
     <Compile Include="Converters\RadialMenuItemToArrowPosition.cs" />
-    <Compile Include="Converters\DoubleToHalfDouble.cs" />
     <Compile Include="Converters\RadialMenuItemToContentPosition.cs" />
-    <Compile Include="Converters\RadialMenuItemToStartAngle.cs" />
     <Compile Include="Controls\PieShape.cs" />
     <Compile Include="Controls\RadialMenuItem.cs" />
     <Page Include="Themes\PieShape.xaml">
@@ -106,7 +102,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

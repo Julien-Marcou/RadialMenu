@@ -11,7 +11,7 @@ namespace RadialMenu.Controls
     {
         public static readonly DependencyProperty IndexProperty =
             DependencyProperty.Register("Index", typeof(int), typeof(RadialMenuItem),
-            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, UpdateItemRendering));
 
         public int Index
         {
@@ -21,7 +21,7 @@ namespace RadialMenu.Controls
 
         public static readonly DependencyProperty CountProperty =
             DependencyProperty.Register("Count", typeof(int), typeof(RadialMenuItem),
-            new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+            new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, UpdateItemRendering));
 
         public int Count
         {
@@ -209,9 +209,56 @@ namespace RadialMenu.Controls
             set { SetValue(ArrowRadiusProperty, value); }
         }
 
+        protected static readonly DependencyPropertyKey AngleDeltaPropertyKey =
+            DependencyProperty.RegisterReadOnly("AngleDelta", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(200.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public static readonly DependencyProperty AngleDeltaProperty = AngleDeltaPropertyKey.DependencyProperty;
+
+        public double AngleDelta
+        {
+            get { return (double)GetValue(AngleDeltaProperty); }
+            protected set { SetValue(AngleDeltaPropertyKey, value); }
+        }
+
+        protected static readonly DependencyPropertyKey StartAnglePropertyKey =
+            DependencyProperty.RegisterReadOnly("StartAngle", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public static readonly DependencyProperty StartAngleProperty = StartAnglePropertyKey.DependencyProperty;
+
+        public double StartAngle
+        {
+            get { return (double)GetValue(StartAngleProperty); }
+            protected set { SetValue(StartAnglePropertyKey, value); }
+        }
+
+        protected static readonly DependencyPropertyKey RotationPropertyKey =
+            DependencyProperty.RegisterReadOnly("Rotation", typeof(double), typeof(RadialMenuItem),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public static readonly DependencyProperty RotationProperty = RotationPropertyKey.DependencyProperty;
+
+        public double Rotation
+        {
+            get { return (double)GetValue(RotationProperty); }
+            protected set { SetValue(RotationPropertyKey, value); }
+        }
+
         static RadialMenuItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RadialMenuItem), new FrameworkPropertyMetadata(typeof(RadialMenuItem)));
+        }
+
+        private static void UpdateItemRendering(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            RadialMenuItem item = d as RadialMenuItem;
+            if (item != null)
+            {
+                item.StartAngle = 360.0 / item.Count * item.Index;
+                item.AngleDelta = 360.0 / item.Count;
+                item.Rotation = item.StartAngle + item.AngleDelta / 2;
+            }
         }
     }
 }

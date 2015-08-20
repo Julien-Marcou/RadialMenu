@@ -4,10 +4,6 @@
     xmlns:Controls="clr-namespace:RadialMenu.Controls"
     xmlns:Converters="clr-namespace:RadialMenu.Converters">
 
-    <Converters:DoubleToHalfDouble x:Key="DoubleToHalfDouble"/>
-    <Converters:RadialMenuItemToAngleDelta x:Key="RadialMenuItemToAngleDelta"/>
-    <Converters:RadialMenuItemToRotation x:Key="RadialMenuItemToRotation"/>
-    <Converters:RadialMenuItemToStartAngle x:Key="RadialMenuItemToStartAngle"/>
     <Converters:RadialMenuItemToContentPosition x:Key="RadialMenuItemToContentPosition"/>
     <Converters:RadialMenuItemToArrowPosition x:Key="RadialMenuItemToArrowPosition"/>
 
@@ -80,23 +76,9 @@
                             InnerRadius="{TemplateBinding InnerRadius}"
                             Fill="{TemplateBinding Background}"
                             StrokeThickness="{Binding BorderThickness.Top, RelativeSource={RelativeSource AncestorType=Controls:RadialMenuItem}}"
-                            Stroke="{TemplateBinding BorderBrush}">
-
-                            <Controls:PieShape.StartAngle>
-                                <MultiBinding Converter="{StaticResource RadialMenuItemToStartAngle}">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                </MultiBinding>
-                            </Controls:PieShape.StartAngle>
-
-                            <Controls:PieShape.AngleDelta>
-                                <MultiBinding Converter="{StaticResource RadialMenuItemToAngleDelta}">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                </MultiBinding>
-                            </Controls:PieShape.AngleDelta>
-
-                        </Controls:PieShape>
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StartAngle="{TemplateBinding StartAngle}"
+                            AngleDelta="{TemplateBinding AngleDelta}"/>
 
                         <!-- Edge pie piece -->
                         <Controls:PieShape
@@ -107,46 +89,18 @@
                             InnerRadius="{TemplateBinding EdgeInnerRadius}"
                             Fill="{TemplateBinding EdgeBackground}"
                             StrokeThickness="{TemplateBinding EdgeBorderThickness}"
-                            Stroke="{TemplateBinding EdgeBorderBrush}">
-
-                            <Controls:PieShape.StartAngle>
-                                <MultiBinding Converter="{StaticResource RadialMenuItemToStartAngle}">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                </MultiBinding>
-                            </Controls:PieShape.StartAngle>
-
-                            <Controls:PieShape.AngleDelta>
-                                <MultiBinding Converter="{StaticResource RadialMenuItemToAngleDelta}">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                </MultiBinding>
-                            </Controls:PieShape.AngleDelta>
-
-                        </Controls:PieShape>
+                            Stroke="{TemplateBinding EdgeBorderBrush}"
+                            StartAngle="{TemplateBinding StartAngle}"
+                            AngleDelta="{TemplateBinding AngleDelta}"/>
 
                         <!-- Edge content (arrow) -->
                         <Canvas>
 
                             <Canvas.RenderTransform>
-                                <RotateTransform>
-
-                                    <RotateTransform.Angle>
-                                        <MultiBinding Converter="{StaticResource RadialMenuItemToRotation}">
-                                            <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                            <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                        </MultiBinding>
-                                    </RotateTransform.Angle>
-
-                                    <RotateTransform.CenterX>
-                                        <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    </RotateTransform.CenterX>
-
-                                    <RotateTransform.CenterY>
-                                        <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    </RotateTransform.CenterY>
-
-                                </RotateTransform>
+                                <RotateTransform
+                                    Angle="{Binding Rotation, RelativeSource={RelativeSource TemplatedParent}}"
+                                    CenterX="{Binding CenterX, RelativeSource={RelativeSource TemplatedParent}}"
+                                    CenterY="{Binding CenterY, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Canvas.RenderTransform>
 
                             <Rectangle Width="{TemplateBinding ArrowWidth}" Height="{TemplateBinding ArrowHeight}">
