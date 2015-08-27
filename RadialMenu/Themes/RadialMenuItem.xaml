@@ -149,9 +149,7 @@
 
                             <Canvas.Left>
                                 <MultiBinding Converter="{StaticResource RadialMenuItemToContentPosition}" ConverterParameter="X">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="HalfShifted" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="Rotation" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>
@@ -162,9 +160,7 @@
 
                             <Canvas.Top>
                                 <MultiBinding Converter="{StaticResource RadialMenuItemToContentPosition}" ConverterParameter="Y">
-                                    <Binding Path="Index" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="Count" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                    <Binding Path="HalfShifted" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="Rotation" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="CenterX" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="CenterY" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Path="Content.ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" FallbackValue="0"/>

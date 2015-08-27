@@ -9,9 +9,9 @@ namespace RadialMenu.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length != 8)
+            if (values.Length != 6)
             {
-                throw new ArgumentException("RadialMenuItemToContentPosition converter needs 8 values (int index, int count, bool halfShifted, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", "values");
+                throw new ArgumentException("RadialMenuItemToContentPosition converter needs 6 values (double angle, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", "values");
             }
             if (parameter == null)
             {
@@ -25,19 +25,12 @@ namespace RadialMenu.Converters
                 throw new ArgumentException("RadialMenuItemToContentPosition parameter needs to be 'X' or 'Y' !", "parameter");
             }
 
-            int index = (int)values[0];
-            int count = (int)values[1];
-            bool halfShifted = (bool)values[2];
-            double centerX = (double)values[3];
-            double centerY = (double)values[4];
-            double contentWidth = (double)values[5];
-            double contentHeight = (double)values[6];
-            double contentRadius = (double)values[7];
-
-            double angleDelta = 360.0 / count;
-            double angleShift = halfShifted  ? - angleDelta / 2 : 0;
-            double startAngle = 360.0 / count * index + angleShift;
-            double angle = startAngle + (angleDelta / 2);
+            double angle = (double)values[0];
+            double centerX = (double)values[1];
+            double centerY = (double)values[2];
+            double contentWidth = (double)values[3];
+            double contentHeight = (double)values[4];
+            double contentRadius = (double)values[5];
 
             Point contentPosition = ComputeCartesianCoordinate(new Point(centerX, centerY), angle, contentRadius);
 
